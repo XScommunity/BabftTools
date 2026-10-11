@@ -65,30 +65,46 @@ html{scroll-behavior:smooth;scroll-padding-top:100px;scrollbar-width:thin;scroll
 .pal i{width:22px;height:22px;border:1px solid var(--line);flex:none}.pal span{flex:1}.pal b{color:var(--muted);font-weight:400}.pal:hover{border-color:var(--lineS)}
 #ppal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;max-height:260px;overflow:auto}
 #pc{image-rendering:pixelated}.chk{display:flex;gap:6px;align-items:center;margin:0}
+select{width:100%;height:42px;padding:0 10px;border:1px solid var(--line);background:var(--sunk);color:var(--ink);font:400 14px 'Geist Mono',monospace;border-radius:0}
+.av{position:relative;width:132px;height:132px;border-radius:50%;margin:0 auto 24px;overflow:hidden;border:1px solid var(--lineS);background:var(--sunk);display:flex;align-items:center;justify-content:center;font:700 52px Archivo,sans-serif;font-stretch:125%}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.soc{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.mtop{display:flex;gap:10px;margin-bottom:24px;position:sticky;top:0;padding:8px 0;z-index:2}.mtop input{flex:1}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.mcard{background:var(--bg);color:var(--ink);text-decoration:none;display:flex;flex-direction:column;gap:6px;padding-bottom:18px}.mcard:hover{background:var(--sunk)}
+.mcard[hidden]{display:none}
+.mimg{position:relative;aspect-ratio:16/9;background:var(--sunk);border-bottom:1px solid var(--line);margin-bottom:10px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.mimg::after{content:attr(data-n);font:700 11px 'Geist Mono',monospace;letter-spacing:.12em;color:var(--faint)}
+.mimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.mcard b,.mcard span{padding:0 18px}.mcard b{font:700 20px Archivo,sans-serif;letter-spacing:-.02em}.mcard span{color:var(--muted);font-size:14px}
+nav>div:first-child{min-width:0;overflow-x:auto;scrollbar-width:none}nav>div:first-child::-webkit-scrollbar{display:none}nav a,nav button{white-space:nowrap}
+@media(max-width:600px){nav a,nav button{padding:0 11px}.hero{padding:56px 16px 48px}.eyebrow{flex-wrap:wrap;gap:6px;padding:12px 16px}.head{padding:40px 16px 28px}.cell .bar{padding:10px 16px}.body{padding:16px}.res b{font-size:16px}.av{width:112px;height:112px}#menu .wrap{padding:12px 16px 32px}}
 </style>
 </head>
 <body>
 <div id="prog"></div>
 <nav>
-<div><a class="logo" href="#">BABFT</a><a class="hud" href="#circle">Circle</a><a class="hud" href="#color">Color</a><a class="hud" href="#pixel">Pixel</a></div>
-<div><button class="hud" id="theme" aria-label="Tema">Tema</button></div>
+<div><a class="logo" href="#">BABFT</a><a class="hud" href="#circle">Circle</a><a class="hud" href="#color">Color</a><a class="hud" href="#pixel">Pixel</a><a class="hud" href="#cone">Cone</a></div>
+<div><button class="hud" id="nmenu">Menu</button><button class="hud" id="theme" aria-label="Tema">Tema</button></div>
 </nav>
 
 <div class="wrap">
 <section class="hero">
-<h1>BABFT TOOLS</h1>
-<h2>Ferramentas <span class="serif">para builders.</span></h2>
-<p>Calcule círculos perfeitos e pegue cores de qualquer imagem. Grátis, direto no navegador.</p>
-<div style="margin-top:28px" class="row" ><span style="margin:auto;display:flex;gap:12px;flex-wrap:wrap;justify-content:center"><a class="btn p" href="#circle">Circle Calculator</a><a class="btn" href="#color">Pick Color</a><a class="btn" href="#pixel">Pixel Art</a></span></div>
+<div class="av"><span>V</span><img src="/zoio1" alt="Voderis" onerror="this.style.display='none'"></div>
+<h1>VODERIS</h1>
+<p>BABFT Engineer &amp; BABFT Builder</p>
+<div class="soc"><a class="btn" href="https://github.com/xscommunity" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn" href="https://youtube.com/@voderis" target="_blank" rel="noopener noreferrer">YouTube</a></div>
+<div style="margin-top:14px"><button class="btn p" id="mbtn">Ferramentas</button></div>
 </section>
 
-<section id="circle">
+<section id="circle" hidden>
 <div class="eyebrow hud"><span class="m"><span class="f">01</span> / Circle Calculator</span><span class="f">Build A Boat For Treasure</span></div>
 <div class="head rv"><h3>Círculos sem <span class="serif">chute.</span></h3><p>Informe a escala do bloco. Escolha uma das rotações oferecidas e veja o ajuste de 1 lado e 2 lados.</p></div>
 <div class="grid">
 <div class="cell rv"><div class="bar hud"><span class="m">Entrada</span><span class="f">A</span></div>
 <div class="body">
 <div class="fld"><label class="hud m">Escala do bloco (X profundidade, Y altura, Z largura)</label><input type="text" id="sc3" value="22, 2, 2" autocomplete="off"></div>
+<div class="fld"><label class="hud m">Lados (opcional, par) · vazio = escolher na tabela</label><input type="number" id="cn" placeholder="ex.: 24" min="4" max="512" step="2"></div>
 <div class="row" style="margin-bottom:12px"><button class="btn p" id="gen">Gerar</button></div>
 <p id="adj" class="hud m" style="margin-bottom:18px;line-height:1.6"></p>
 <div class="res" style="grid-template-columns:1fr 1fr">
@@ -108,7 +124,7 @@ html{scroll-behavior:smooth;scroll-padding-top:100px;scrollbar-width:thin;scroll
 </div>
 </section>
 
-<section id="color" style="border-top:1px solid var(--line)">
+<section id="color" hidden style="border-top:1px solid var(--line)">
 <div class="eyebrow hud"><span class="m"><span class="f">02</span> / Pick Color</span><span class="f">Imagem → RGB</span></div>
 <div class="head rv"><h3>Cor <span class="serif">exata</span> de qualquer pixel.</h3><p>Envie, arraste ou cole uma imagem (Ctrl+V) e clique no pixel desejado.</p></div>
 <div class="grid">
@@ -126,7 +142,7 @@ html{scroll-behavior:smooth;scroll-padding-top:100px;scrollbar-width:thin;scroll
 </div>
 </section>
 
-<section id="pixel" style="border-top:1px solid var(--line)">
+<section id="pixel" hidden style="border-top:1px solid var(--line)">
 <div class="eyebrow hud"><span class="m"><span class="f">03</span> / Pixel Art</span><span class="f">Imagem → Blocos</span></div>
 <div class="head rv"><h3>Pixel art <span class="serif">em blocos.</span></h3><p>Envie uma arte, defina o tamanho de cada bloco e veja quantos blocos vai usar. Clique em qualquer pixel para pegar o RGB.</p></div>
 <div class="grid">
@@ -156,9 +172,39 @@ html{scroll-behavior:smooth;scroll-padding-top:100px;scrollbar-width:thin;scroll
 </div>
 </section>
 
+<section id="cone" hidden style="border-top:1px solid var(--line)">
+<div class="eyebrow hud"><span class="m"><span class="f">04</span> / Cone Calculator</span><span class="f">Baseado no Cone Guide do KasherUser</span></div>
+<div class="head rv"><h3>Cones <span class="serif">perfeitos.</span></h3></div>
+<div class="grid">
+<div class="cell rv"><div class="bar hud"><span class="m">Entrada</span><span class="f">A</span></div><div class="body">
+<div class="row fld"><div style="flex:1;min-width:110px"><label class="hud m">Lados</label><input type="number" id="kn" value="16" min="3"  step="1"></div><div style="flex:1;min-width:110px"><label class="hud m">Diâmetro (face a face)</label><input type="number" id="kd" value="10" min="0.1"  step="0.1"></div><div style="flex:1;min-width:110px"><label class="hud m">Altura</label><input type="number" id="kh" value="20" min="0.1"  step="0.1"></div></div>
+<div class="row fld"><div style="flex:1;min-width:110px"><label class="hud m">Suavidade (camadas)</label><input type="number" id="kk" value="1" min="1" max="24" step="1"></div><div style="flex:1;min-width:110px"><label class="hud m">Curvatura (-10 a 10)</label><input type="number" id="kc" value="0" min="-10" max="10" step="1"></div><div style="flex:1;min-width:110px"><label class="hud m">Corte da ponta (%)</label><input type="number" id="kg" value="0" min="0" max="95" step="1"></div></div>
+<p class="hud f" style="margin-bottom:14px;line-height:1.6">Curvatura positiva = convexo (ponta arredondada) · negativa = côncavo. Só faz efeito com suavidade 2 ou mais.</p>
+<div class="fld"><label class="hud m">Camada em detalhe (1 = a de baixo)</label><select id="ksel"></select></div>
+<div class="res" style="grid-template-columns:1fr 1fr">
+<div><span class="hud f">Largura embaixo · 1 lado</span><b id="kwb">–</b></div><div><span class="hud f">Largura embaixo · 2 lados (cada)</span><b id="kw2">–</b></div>
+<div><span class="hud f">Largura em cima · 1 lado / 2 lados</span><b id="kwt">–</b></div><div><span class="hud f">Barra do centro</span><b id="kcb">–</b></div>
+<div><span class="hud f">Inclinação (do chão)</span><b id="kil">–</b></div><div><span class="hud f">Barras laterais</span><b id="klb">–</b></div>
+<div><span class="hud f">Ângulo das laterais</span><b id="kga">–</b></div><div><span class="hud f">Rotação</span><b id="kex">–</b></div></div>
+</div></div>
+<div class="cell rv"><div class="bar hud"><span class="m">Preview 3D</span><span class="f">B</span></div><div class="body">
+<div style="position:relative;height:420px"><canvas id="kvc" style="width:100%;height:100%;display:block;background:#10131a;cursor:grab;border:1px solid var(--line)"></canvas><button class="btn s" id="kanim" style="position:absolute;left:10px;bottom:10px">Parar animação</button></div>
+<p class="hud f" style="margin-top:8px">Arraste para girar · scroll para zoom</p></div></div>
+<div class="cell rv" style="grid-column:1/-1"><div class="bar hud"><span class="m">Como montar a camada escolhida</span><span class="f">C</span></div><div class="body">
+<ol id="khow" class="m" style="padding-left:20px;font-size:14px;line-height:1.7;margin-bottom:18px"></ol>
+<div class="tw"><table><thead><tr><th>Camada</th><th>Altura Z</th><th>Dist. eixo</th><th>Larg. embaixo (1 / 2 lados)</th><th>Larg. em cima (1 / 2 lados)</th><th>Barra centro</th><th>Incl. chão</th><th>Barra lateral</th><th>Âng. lateral</th></tr></thead><tbody id="kt"></tbody></table></div></div></div>
+</div>
+</section>
+
 <footer class="hud f"><span>© 2026 BABFT Tools</span><span>Feito por builders, para builders</span></footer>
 </div>
 
+<div id="menu" hidden style="position:fixed;inset:0;z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:auto">
+<div class="wrap" style="min-height:100%;padding:16px 24px 40px">
+<div class="mtop"><input type="text" id="msearch" placeholder="Pesquisar ferramenta..." autocomplete="off"><button class="btn" id="mclose">Fechar</button></div>
+<div class="mgrid"><a class="mcard" href="#circle" data-k="Circle Calculator círculo circulo lados rotação escala"><div class="mimg" data-n="01"><img src="/circle" alt="" onerror="this.style.display='none'"></div><b>Circle Calculator</b><span>Calcula largura, rotação e ajuste de 1 lado e 2 lados para montar círculos perfeitos.</span></a><a class="mcard" href="#color" data-k="Pick Color cor rgb hex pixel imagem"><div class="mimg" data-n="02"><img src="/color" alt="" onerror="this.style.display='none'"></div><b>Pick Color</b><span>Envie uma imagem, clique num pixel e copie o RGB, HEX ou Color3.</span></a><a class="mcard" href="#pixel" data-k="Pixel Art arte blocos paleta quantidade"><div class="mimg" data-n="03"><img src="/pixel" alt="" onerror="this.style.display='none'"></div><b>Pixel Art</b><span>Converte uma arte em blocos, conta quantos usar e deixa marcar os já feitos.</span></a><a class="mcard" href="#cone" data-k="Cone Calculator cone faces barras curvatura suavidade"><div class="mimg" data-n="04"><img src="/cone" alt="" onerror="this.style.display='none'"></div><b>Cone Calculator</b><span>Mede faces, barras e ângulos para montar cones retos ou curvos.</span></a></div>
+<p id="mnone" class="hud f" hidden style="margin-top:20px">Nenhuma ferramenta encontrada.</p>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script>
 const $=id=>document.getElementById(id);
@@ -197,18 +243,29 @@ function calc(){
  for(let n=8;n<=256;n+=4){const r=360/n;if(Math.abs(Math.round(r*100)-r*100)>1e-9)continue;
   const w=L*Math.tan(Math.PI/n),wr=Math.round(w*1000)/1000;opts.push({n,r,w,wr,d:wr-B,err:n*Math.abs(w-wr)})}
  const rec=opts.reduce((a,b)=>Math.abs(b.w-B)<Math.abs(a.w-B)?b:a);
- $('opt').innerHTML=opts.map(o=>`<tr data-n="${o.n}" style="cursor:pointer"><td>${o.n}${o===rec?' ★':''}</td><td>${f(o.r,2)}°</td><td>${f(o.wr)}</td><td>${f(o.d)}</td><td>${f(o.d/2,4)}</td><td>${f(o.err)}</td></tr>`).join('');
- $('adj').textContent=`★ Recomendado: ${rec.n} lados (${f(rec.r,2)}°), a menor mudança na largura. Todas as rotações listadas são exatas (até 2 casas) e simétricas. Erro = folga/sobreposição total por arredondar a largura em 3 casas.`;
- pick(rec.n)}
+ let cn=Math.round(+$('cn').value),cm='',pk=rec.n;
+ if($('cn').value.trim()!==''){
+  if(!(cn>=4&&cn<=512))cm='Lados: use um valor entre 4 e 512 (ignorei a sua escolha). ';
+  else{
+   if(cn%2){cn++;cm='Lados precisa ser par (cada barra tem 2 pontas): usei '+cn+'. '}
+   const r=360/cn,w=L*Math.tan(Math.PI/cn),wr=Math.round(w*1000)/1000,exact=Math.abs(Math.round(r*100)-r*100)<1e-9;
+   if(!opts.find(o=>o.n===cn))opts.unshift({n:cn,r,w,wr,d:wr-B,err:cn*Math.abs(w-wr),custom:true,rd:exact?2:4});
+   pk=cn;
+   if(cn%4)cm+='Sem simetria perfeita: use múltiplo de 4 para isso. ';
+   if(!exact)cm+='Rotação com casas decimais ('+f(r,4)+'°): pode sobrar folga ou sobreposição. ';
+  }}
+ $('opt').innerHTML=opts.map(o=>`<tr data-n="${o.n}" style="cursor:pointer"><td>${o.n}${o===rec?' ★':''}${o.custom?' (sua escolha)':''}</td><td>${f(o.r,o.rd||2)}°</td><td>${f(o.wr)}</td><td>${f(o.d)}</td><td>${f(o.d/2,4)}</td><td>${f(o.err)}</td></tr>`).join('');
+ $('adj').textContent=cm+`★ Recomendado: ${rec.n} lados (${f(rec.r,2)}°), a menor mudança na largura. Todas as rotações listadas são exatas (até 2 casas) e simétricas. Erro = folga/sobreposição total por arredondar a largura em 3 casas.`;
+ pick(pk)}
 function pick(n){
  const o=opts.find(x=>x.n===n);if(!o)return;
  D=L;W=o.w;N=n;HH=Hh;
  const dir=o.d<0?'diminua':'aumente';
- $('dm').textContent=`${f(L)} , ${f(Hh)} , ${f(o.wr)}`;$('an').textContent=f(o.r,2)+'°';$('s1').textContent=f(o.d);$('s2').textContent=f(o.d/2,4);
- $('how').innerHTML=`<li>Escale um bloco de <b>${f(L)} , ${f(Hh)} , ${f(B)}</b> para <b>${f(L)} , ${f(Hh)} , ${f(o.wr)}</b>: só o Z (largura) muda, ${dir} <b>${f(Math.abs(o.d/2),4)}</b> de cada lado (ou <b>${f(Math.abs(o.d))}</b> de um lado só).</li><li>Clone com o trowel e gire <b>${f(o.r,2)}°</b>.</li><li>Repita até completar <b>${n/2}</b> blocos.</li>`;
+ $('dm').textContent=`${f(L)} , ${f(Hh)} , ${f(o.wr)}`;$('an').textContent=f(o.r,o.rd||2)+'°';$('s1').textContent=f(o.d);$('s2').textContent=f(o.d/2,4);
+ $('how').innerHTML=`<li>Escale um bloco de <b>${f(L)} , ${f(Hh)} , ${f(B)}</b> para <b>${f(L)} , ${f(Hh)} , ${f(o.wr)}</b>: só o Z (largura) muda, ${dir} <b>${f(Math.abs(o.d/2),4)}</b> de cada lado (ou <b>${f(Math.abs(o.d))}</b> de um lado só).</li><li>Clone com o trowel e gire <b>${f(o.r,o.rd||2)}°</b>.</li><li>Repita até completar <b>${n/2}</b> blocos.</li>`;
  [...$('opt').rows].forEach(r=>r.style.background=+r.dataset.n===n?'var(--sunk)':'');
  build()}
-$('gen').onclick=calc;$('sc3').onkeydown=e=>{if(e.key==='Enter')calc()};
+$('gen').onclick=calc;['sc3','cn'].forEach(i=>$(i).onkeydown=e=>{if(e.key==='Enter')calc()});
 $('opt').onclick=e=>{const t=e.target.closest('tr');if(t)pick(+t.dataset.n)};
 $('anim').onclick=e=>{spin=!spin;e.target.textContent=spin?'Parar animação':'Iniciar animação'};
 $('full').onclick=e=>{full=!full;e.target.textContent=full?'Ver bloco':'Ver círculo';build()};
@@ -302,6 +359,64 @@ $('pgrid').onchange=()=>{if(grid.length)pdraw()};
 $('ppal').onclick=e=>{const b=e.target.closest('.pal');if(b)copy(b.dataset.k.replace(/,/g,', '),b.querySelector('span'))};
 $('pcsv').onclick=e=>{if(pal.length)copy('R,G,B,Quantidade\n'+pal.map(([k,n])=>k+','+n).join('\n'),e.target)};
 
+// Cone
+let tiers=[],ks=0,kP={n:16,H:20};
+const kr=new THREE.WebGLRenderer({canvas:$('kvc'),antialias:true,alpha:true}),ksc=new THREE.Scene(),kcam=new THREE.PerspectiveCamera(45,1,.1,3000),kgrp=new THREE.Group();
+ksc.add(new THREE.AmbientLight(0xffffff,.65));const kdl=new THREE.DirectionalLight(0xffffff,.9);kdl.position.set(5,10,7);ksc.add(kdl,kgrp);
+let kth=Math.PI/4,kph=Math.PI/2.8,krad=40,kspin=true,kdrag=false,kx=0,ky=0;
+const kcc=()=>{kcam.position.set(krad*Math.sin(kph)*Math.sin(kth),krad*Math.cos(kph),krad*Math.sin(kph)*Math.cos(kth));kcam.lookAt(0,0,0)};
+function ksize(){const r=$('kvc').getBoundingClientRect();kr.setSize(r.width,r.height,false);kcam.aspect=r.width/r.height;kcam.updateProjectionMatrix()}
+function kcalc(){
+ const n=Math.max(3,Math.round(+$('kn').value)||3),D=+$('kd').value,H=+$('kh').value,S=Math.max(1,Math.min(24,Math.round(+$('kk').value)||1)),q=Math.max(-1,Math.min(1,(+$('kc').value||0)/10)),g=Math.max(0,Math.min(95,+$('kg').value||0));
+ if(!(D>0)||!(H>0))return;
+ const Rm=(D-D/100*g)/2,tot=S*(S+1)/2,tn=Math.tan(Math.PI/n),dg=180/Math.PI;
+ tiers=[];let A=D/2,Z=0;
+ for(let i=1;i<=S;i++){
+  const r=Rm/tot*(1+(S-1)/2*(1-q)+(i-1)*q),h=H/tot*(1+(S-1)/2*(1-q)+(S-i)*q),sg=Math.hypot(r,h);
+  tiers.push({i,A,Z,r,h,sg,tau:Math.atan2(r,h)*dg,wb:2*A*tn,wt:2*(A-r)*tn,lat:Math.hypot(sg,r*tn),phi:Math.atan2(r*tn,sg)*dg});
+  A-=r;Z+=h}
+ tiers.top=A;kP={n,H};
+ if(ks>=S)ks=0;
+ $('ksel').innerHTML=tiers.map(x=>`<option value="${x.i-1}"${x.i-1===ks?' selected':''}>Camada ${x.i} de ${S}</option>`).join('');
+ $('kt').innerHTML=tiers.map(x=>`<tr data-j="${x.i-1}" style="cursor:pointer"><td>${x.i}</td><td>${f(x.Z)}</td><td>${f(x.A)}</td><td>${f(x.wb)} / ${f(x.wb/2,4)}</td><td>${f(x.wt)} / ${f(x.wt/2,4)}</td><td>${f(x.sg)}</td><td>${f(90-x.tau,2)}°</td><td>${f(x.lat)}</td><td>${f(90-x.phi,2)}°</td></tr>`).join('');
+ while(kgrp.children.length)kgrp.remove(kgrp.children[0]);
+ const cs=Math.cos(Math.PI/n),pts=tiers.map(x=>new THREE.Vector2(Math.max(x.A/cs,1e-4),x.Z));pts.push(new THREE.Vector2(Math.max(tiers.top/cs,1e-4),H));
+ const geo=new THREE.LatheGeometry(pts,n),m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:0x4a90e2,roughness:.6,flatShading:true,side:THREE.DoubleSide}));
+ m.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo,2),new THREE.LineBasicMaterial({color:0xffffff})));m.position.y=-H/2;kgrp.add(m);
+ krad=Math.max(D,H)*1.6;kcc();kshow()}
+function kshow(){
+ const x=tiers[ks],n=kP.n,ex=360/n,tri=x.wt<1e-3;
+ $('kwb').textContent=f(x.wb);$('kw2').textContent=f(x.wb/2,4);$('kwt').textContent=tri?'0 (ponta)':f(x.wt)+' / '+f(x.wt/2,4);$('kcb').textContent=f(x.sg);$('kil').textContent=f(90-x.tau,2)+'° (ou '+f(x.tau,2)+'°)';$('klb').textContent=f(x.lat);$('kga').textContent=f(90-x.phi,2)+'° (ou '+f(x.phi,2)+'°)';$('kex').textContent=f(ex,3)+'°';
+ [...$('kt').rows].forEach(r=>r.style.background=+r.dataset.j===ks?'var(--sunk)':'');
+ const dir=Math.abs(Math.round(ex*100)-ex*100)>1e-9?' Atenção: esse ângulo tem muitas casas decimais; prefira lados como 8, 12, 16, 20, 24, 36.':'';
+ $('khow').innerHTML=`<li>Faça <b>3 barras</b>: centro com <b>${f(x.sg)}</b> e duas laterais com <b>${f(x.lat)}</b> cada.</li><li>Junte pela ponta de cima. Gire a da esquerda e a da direita <b>${f(x.phi,2)}°</b> para fora do centro (o mesmo que <b>${f(90-x.phi,2)}°</b> contado a partir da base). A face fica com <b>${f(x.wb)}</b> de largura embaixo (<b>${f(x.wb/2,4)}</b> para cada lado do centro)${tri?'':` e ${f(x.wt)} em cima (${f(x.wt/2,4)} para cada lado)`}.</li><li>Incline a face montada em <b>${f(90-x.tau,2)}°</b> em relação ao chão (ou ${f(x.tau,2)}° da vertical). A base da face fica a <b>${f(x.A)}</b> do eixo e a <b>${f(x.Z)}</b> de altura.</li><li>Clone e gire <b>${f(ex,3)}°</b> ao redor do eixo vertical, até ter <b>${n}</b> faces.${dir}</li><li>${tiers.length>1?'Repita para as outras camadas da tabela, subindo.':'Pronto: cone de uma camada.'}</li>`}
+['kn','kd','kh','kk','kc','kg'].forEach(i=>$(i).oninput=kcalc);
+$('ksel').onchange=e=>{ks=+e.target.value;kshow()};
+$('kt').onclick=e=>{const r=e.target.closest('tr');if(r){ks=+r.dataset.j;$('ksel').value=ks;kshow()}};
+$('kanim').onclick=e=>{kspin=!kspin;e.target.textContent=kspin?'Parar animação':'Iniciar animação'};
+const kv=$('kvc'),kmv=(a,b)=>{kth-=(a-kx)*.008;kph=Math.max(.15,Math.min(Math.PI-.15,kph-(b-ky)*.008));kx=a;ky=b;kcc()};
+kv.onmousedown=e=>{kdrag=true;kx=e.clientX;ky=e.clientY};addEventListener('mouseup',()=>kdrag=false);addEventListener('mousemove',e=>{if(kdrag)kmv(e.clientX,e.clientY)});
+kv.addEventListener('wheel',e=>{e.preventDefault();krad=Math.max(1,Math.min(1000,krad*(e.deltaY>0?1.08:.92)));kcc()},{passive:false});
+kv.addEventListener('touchstart',e=>{kdrag=true;kx=e.touches[0].clientX;ky=e.touches[0].clientY});kv.addEventListener('touchend',()=>kdrag=false);
+kv.addEventListener('touchmove',e=>{e.preventDefault();if(kdrag)kmv(e.touches[0].clientX,e.touches[0].clientY)},{passive:false});
+(function kl(){requestAnimationFrame(kl);if(!kdrag&&kspin)kgrp.rotation.y+=.004;kr.render(ksc,kcam)})();
+addEventListener('resize',ksize);
+kcalc();ksize();
+
+// Menu
+const mn=$('menu'),mc=[...document.querySelectorAll('.mcard')];
+const nz=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function mfilter(){const q=nz($('msearch').value.trim());let v=0;mc.forEach(c=>{const ok=!q||nz(c.dataset.k+' '+c.textContent).includes(q);c.hidden=!ok;if(ok)v++});$('mnone').hidden=v>0}
+function mopen(){mn.hidden=false;document.body.style.overflow='hidden';$('msearch').value='';mfilter();$('msearch').focus()}
+function mclose(){mn.hidden=true;document.body.style.overflow=''}
+$('mbtn').onclick=mopen;$('mclose').onclick=mclose;$('msearch').oninput=mfilter;
+const TOOLS=['circle','color','pixel','cone'];
+function showTool(id){TOOLS.forEach(k=>$(k).hidden=k!==id);if(id==='circle')size();if(id==='cone')ksize();history.replaceState(null,'','#'+id);$(id).scrollIntoView({behavior:'smooth'})}
+mc.forEach(c=>c.addEventListener('click',e=>{e.preventDefault();mclose();showTool(c.getAttribute('href').slice(1))}));
+document.querySelectorAll('nav a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);e.preventDefault();if(TOOLS.includes(id))showTool(id);else{TOOLS.forEach(k=>$(k).hidden=true);history.replaceState(null,'','#');scrollTo({top:0,behavior:'smooth'})}}));
+$('nmenu').onclick=mopen;
+{const h=location.hash.slice(1);if(TOOLS.includes(h))showTool(h)}
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!mn.hidden)mclose()});
 // Scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
 document.querySelectorAll('.rv,.eyebrow').forEach(el=>io.observe(el));
